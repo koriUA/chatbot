@@ -34,6 +34,7 @@ app.get('/privacy-policy', function(req, res) {
 app.get('/webhook/', function(req, res) {
     console.log('GET /webhook/');
     if (req.query['hub.verify_token'] === 'blondiebytes') {
+        res.send('ok 1.......................................');
         res.send(req.query['hub.challenge']);
     }
     res.send('Wrong token...');
@@ -55,6 +56,7 @@ app.post('/webhook/', function(req, res) {
 const access_token = "EAAJo2B7RWcYBAAiTKNgeCZBQyDNgUzo1AZB4P1jfbUkvs0K8xj48bJoOVM7OfHaFRv0SogRsqh5yIWUDjVOxMsDBOf7RDV2XQTxbEyqZAnr8bxuyJAGgVFggogFD6ByoePtKYjtb1m0Qmae4ROby5E4bPuPvnqmx7nEdHcGoAZDZD";
 
 function sendText(sender, text) {
+    res.send('ok 2.......................................');
     let messageData = {text: text};
     request({
         url: "https://graph.facebook.com/v2.6/me/messages",
@@ -65,9 +67,11 @@ function sendText(sender, text) {
             message: messageData
         }
     }, function(error, response, body) {
+        res.send('bad 1.......................................', error);
         if (error) {
             console.log("sending error");
         } else if (response.body.error) {
+            res.send('bad 2.......................................', response.body.error);
             console.log("response body error");
         }
     });
