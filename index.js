@@ -57,7 +57,7 @@ app.post('/webhook/', function(req, res) {
 const access_token = "EAAJo2B7RWcYBAACxZBdxb5nUKtV04ulydX5WUwPpJ8aYHW7zK3Hs09nmc1EhmvMMUxsHKcdn5ge95xwIM0I2RXYnQZBQUdDQPqiRvxowRZBNoPQOAAQjlRWwUMo7PnAwq24TzY4qOAxUg0IJafrAYF664hFz7dG8gZBSpA3MYKrXo7Xi0arK";
 
 function sendText(sender, text) {
-    res.send('ok 2..................................................................................................................................');
+    console.log('ok 2..................................................................................................................................');
     let messageData = {text: text};
     request({
         url: "https://graph.facebook.com/v4.0/me/messages",
