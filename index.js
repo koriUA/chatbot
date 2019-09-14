@@ -27,21 +27,21 @@ app.get('/', function(req, res) {
 });
 
 app.get('/privacy-policy', function(req, res) {
-    console.log('/privacy-policy');
+    console.log('/privacy-policy...........................................................................................');
     res.render('index.html', { req });
 });
 
 app.get('/webhook/', function(req, res) {
-    console.log('GET /webhook/');
+    console.log('GET /webhook/...........................................................................................');
     if (req.query['hub.verify_token'] === 'blondiebytes') {
-        res.send('ok 1.......................................');
+        res.send('ok 1..................................................................................................................................');
         res.send(req.query['hub.challenge']);
     }
     res.send('Wrong token...');
 });
 
 app.post('/webhook/', function(req, res) {
-    console.log('POST /webhook/');
+    console.log('POST /webhook/...........................................................................................');
    let messaging_events = req.body.entry[0].messaging;
    for (let i = 0; i < messaging_events.length; i++) {
        let event = messaging_events[i];
@@ -56,7 +56,7 @@ app.post('/webhook/', function(req, res) {
 const access_token = "EAAJo2B7RWcYBAAiTKNgeCZBQyDNgUzo1AZB4P1jfbUkvs0K8xj48bJoOVM7OfHaFRv0SogRsqh5yIWUDjVOxMsDBOf7RDV2XQTxbEyqZAnr8bxuyJAGgVFggogFD6ByoePtKYjtb1m0Qmae4ROby5E4bPuPvnqmx7nEdHcGoAZDZD";
 
 function sendText(sender, text) {
-    res.send('ok 2.......................................');
+    res.send('ok 2..................................................................................................................................');
     let messageData = {text: text};
     request({
         url: "https://graph.facebook.com/v4.0/me/messages",
@@ -68,11 +68,11 @@ function sendText(sender, text) {
             subscribed_fields: 'messages'
         }
     }, function(error, response, body) {
-        res.send('bad 1.......................................', error);
+        res.send('bad 1..................................................................................................................................', error);
         if (error) {
             console.log("sending error");
         } else if (response.body.error) {
-            res.send('bad 2.......................................', response.body.error);
+            res.send('bad 2..................................................................................................................................', response.body.error);
             console.log("response body error");
         }
     });
