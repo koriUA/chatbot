@@ -59,12 +59,13 @@ function sendText(sender, text) {
     res.send('ok 2.......................................');
     let messageData = {text: text};
     request({
-        url: "https://graph.facebook.com/v2.6/me/messages",
+        url: "https://graph.facebook.com/v4.0/me/messages",
         qs: {access_token},
         method: "POST",
         json: {
             recipient: {id: sender},
-            message: messageData
+            message: messageData,
+            subscribed_fields: 'messages'
         }
     }, function(error, response, body) {
         res.send('bad 1.......................................', error);
