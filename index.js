@@ -32,7 +32,7 @@ app.get('/privacy-policy', function(req, res) {
 
 app.get('/webhook/', function(req, res) {
     if (req.query['hub.verify_token'] === 'blondiebytes') {
-        res.send(req.query['hub.challenge']);
+        res.status(200).send(req.query['hub.challenge']);
     }
     res.send('Wrong token...');
 });
@@ -47,7 +47,8 @@ app.post('/webhook/', function(req, res) {
            sendText(sender, "Text echo: " + text.substring(0, 100));
        }
    }
-   res.status(200).end();
+    // Returns a '200 OK' response to all requests
+    res.status(200).send('EVENT_RECEIVED');
 });
 
 const access_token = "EAAJo2B7RWcYBAACxZBdxb5nUKtV04ulydX5WUwPpJ8aYHW7zK3Hs09nmc1EhmvMMUxsHKcdn5ge95xwIM0I2RXYnQZBQUdDQPqiRvxowRZBNoPQOAAQjlRWwUMo7PnAwq24TzY4qOAxUg0IJafrAYF664hFz7dG8gZBSpA3MYKrXo7Xi0arK";
@@ -65,6 +66,7 @@ function sendText(sender, text) {
         }
     }, function(error, response, body) {
         if (error) {
+            console.log("error");
         } else if (response.body.error) {
             console.log("response body error");
         }
