@@ -69,7 +69,7 @@ function sendText(sender, text) {
             subscribed_fields: 'messages'
         }
     }, function(error, response, body) {
-        console.log('bad 1..................................................................................................................................', error, response, body);
+        console.log('bad 1..................................................................................................................................', error);
         if (error) {
             console.log("sending error");
         } else if (response.body.error) {
