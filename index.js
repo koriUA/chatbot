@@ -78,5 +78,5 @@ app.listen(app.get('port'), function() {
 });
 
 
-
+//heroku logs --tail --app chatbot432
 
